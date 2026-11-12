@@ -3,9 +3,6 @@ CREATE DATABASE sistema_vacinacao_pet;
 USE sistema_vacinacao_pet;
 
 
--- =====================================
--- 1. TABELA TUTOR
--- =====================================
 
 CREATE TABLE tutor (
     id_tutor INT AUTO_INCREMENT PRIMARY KEY,
@@ -17,9 +14,6 @@ CREATE TABLE tutor (
 );
 
 
--- =====================================
--- 2. TABELA ANIMAIS
--- =====================================
 
 CREATE TABLE animais (
     id_animal INT AUTO_INCREMENT PRIMARY KEY,
@@ -37,10 +31,6 @@ CREATE TABLE animais (
 );
 
 
--- =====================================
--- 3. TABELA FUNCIONARIOS
--- =====================================
-
 CREATE TABLE funcionarios (
     id_funcionario INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -53,9 +43,6 @@ CREATE TABLE funcionarios (
 );
 
 
--- =====================================
--- 4. TABELA USUARIOS
--- =====================================
 
 CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
@@ -65,14 +52,10 @@ CREATE TABLE usuarios (
     ativo BOOLEAN DEFAULT TRUE,
     ultimo_acesso DATETIME,
 
-    FOREIGN KEY (id_funcionario)
-        REFERENCES funcionarios(id_funcionario)
+    FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id_funcionario)
 );
 
 
--- =====================================
--- 5. TABELA VACINAS
--- =====================================
 
 CREATE TABLE vacinas (
     id_vacina INT AUTO_INCREMENT PRIMARY KEY,
@@ -85,10 +68,6 @@ CREATE TABLE vacinas (
 );
 
 
--- =====================================
--- 6. TABELA LOTE VACINAS
--- =====================================
-
 CREATE TABLE lote_vacinas (
     id_lote INT AUTO_INCREMENT PRIMARY KEY,
     id_vacina INT NOT NULL,
@@ -99,14 +78,9 @@ CREATE TABLE lote_vacinas (
 
     UNIQUE (id_vacina, codigo_lote),
 
-    FOREIGN KEY (id_vacina)
-        REFERENCES vacinas(id_vacina)
+    FOREIGN KEY (id_vacina) REFERENCES vacinas(id_vacina)
 );
 
-
--- =====================================
--- 7. TABELA APLICACOES
--- =====================================
 
 CREATE TABLE aplicacoes (
     id_aplicacao INT AUTO_INCREMENT PRIMARY KEY,
@@ -119,23 +93,13 @@ CREATE TABLE aplicacoes (
     proxima_dose DATE,
     observacoes TEXT,
 
-    FOREIGN KEY (id_animal)
-        REFERENCES animais(id_animal),
-
-    FOREIGN KEY (id_vacina)
-        REFERENCES vacinas(id_vacina),
-
-    FOREIGN KEY (id_lote)
-        REFERENCES lote_vacinas(id_lote),
-
-    FOREIGN KEY (id_funcionario)
-        REFERENCES funcionarios(id_funcionario)
+    FOREIGN KEY (id_animal) REFERENCES animais(id_animal),
+    FOREIGN KEY (id_vacina) REFERENCES vacinas(id_vacina),
+    FOREIGN KEY (id_lote) REFERENCES lote_vacinas(id_lote),
+    FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id_funcionario)
 );
 
 
--- =====================================
--- 8. TABELA ESTOQUE VACINAS
--- =====================================
 
 CREATE TABLE estoque_vacinas (
     id_movimentacao INT AUTO_INCREMENT PRIMARY KEY,
@@ -146,17 +110,11 @@ CREATE TABLE estoque_vacinas (
     motivo VARCHAR(200),
     tipo ENUM('Entrada', 'Saida', 'Ajuste') NOT NULL,
 
-    FOREIGN KEY (id_lote)
-        REFERENCES lote_vacinas(id_lote),
-
-    FOREIGN KEY (id_usuario)
-        REFERENCES usuarios(id_usuario)
+    FOREIGN KEY (id_lote) REFERENCES lote_vacinas(id_lote),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
 );
 
 
--- =====================================
--- 9. TABELA AGENDAMENTOS
--- =====================================
 
 CREATE TABLE agendamentos (
     id_agendamento INT AUTO_INCREMENT PRIMARY KEY,
@@ -168,20 +126,11 @@ CREATE TABLE agendamentos (
     status ENUM('Agendado', 'Concluido', 'Cancelado')
         DEFAULT 'Agendado',
 
-    FOREIGN KEY (id_animal)
-        REFERENCES animais(id_animal),
-
-    FOREIGN KEY (id_vacina)
-        REFERENCES vacinas(id_vacina),
-
-    FOREIGN KEY (id_funcionario)
-        REFERENCES funcionarios(id_funcionario)
+    FOREIGN KEY (id_animal) REFERENCES animais(id_animal),
+    FOREIGN KEY (id_vacina) REFERENCES vacinas(id_vacina),
+    FOREIGN KEY (id_funcionario) REFERENCES funcionarios(id_funcionario)
 );
 
-
--- =====================================
--- 10. TABELA DESPESAS
--- =====================================
 
 CREATE TABLE despesas (
     id_despesa INT AUTO_INCREMENT PRIMARY KEY,
@@ -193,14 +142,9 @@ CREATE TABLE despesas (
     forma_pagamento VARCHAR(50),
     comprovante VARCHAR(255),
 
-    FOREIGN KEY (id_usuario)
-        REFERENCES usuarios(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
 );
 
-
--- =====================================
--- 11. TABELA LOGS
--- =====================================
 
 CREATE TABLE logs (
     id_log INT AUTO_INCREMENT PRIMARY KEY,
@@ -209,6 +153,5 @@ CREATE TABLE logs (
     tabela_afetada VARCHAR(60),
     data_hora DATETIME DEFAULT CURRENT_TIMESTAMP,
 
-    FOREIGN KEY (id_usuario)
-        REFERENCES usuarios(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
 );
