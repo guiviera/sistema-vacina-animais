@@ -1,22 +1,31 @@
-# VetCare — sistema de vacinação veterinária
+# VetCare — Sistema de Vacinação Veterinária
 
-Projeto inicial com frontend em HTML/CSS/JavaScript puro, backend Node.js + Express e banco MySQL.
+Projeto desenvolvido utilizando MySQL, HTML, CSS, JavaScript e Node.js.
+
+O sistema possui frontend em HTML/CSS/JavaScript puro, backend Node.js + Express e banco de dados MySQL.
 
 ## 1. Requisitos
+
 - Node.js LTS instalado
 - MySQL Server instalado e em execução
 - MySQL Workbench (opcional, recomendado)
 
 ## 2. Banco de dados
-Execute no MySQL Workbench o SQL das 11 tabelas que foi preparado para o projeto anteriormente. O nome esperado é `sistema_vacinacao_pet`.
+
+Execute no MySQL Workbench o arquivo SQL localizado em `database/sistema_vacinacao_pet.sql`.
+
+O nome esperado do banco é `sistema_vacinacao_pet`.
 
 ## 3. Configuração
+
 Na pasta principal do projeto:
+
 1. Duplique `.env.example` e renomeie a cópia para `.env`.
 2. Preencha usuário, senha e dados de conexão do MySQL.
 3. Defina `JWT_SECRET` com uma chave aleatória longa (pelo menos 32 caracteres).
 
 ## 4. Instalar e executar
+
 Abra o terminal na pasta do projeto e execute:
 
 ```bash
@@ -27,12 +36,14 @@ npm start
 Acesse `http://localhost:3000`.
 
 Para desenvolvimento com reinicialização automática:
+
 ```bash
 npm install --save-dev nodemon
 npm run dev
 ```
 
 ## 5. Primeiro acesso e cadastro
+
 1. Inicie o projeto com `npm start`.
 2. Abra `http://localhost:3000/cadastro.html`.
 3. Preencha os dados do responsável, escolha um cargo, login e senha (mínimo de 8 caracteres).
@@ -42,6 +53,7 @@ npm run dev
 **Segurança:** a página de cadastro é de uso inicial e só cria a primeira conta, enquanto a tabela `usuarios` estiver vazia. Depois disso, o endpoint público bloqueia novos cadastros. Novos acessos devem ser criados por um administrador dentro do sistema.
 
 ## 6. O que já está incluído
+
 - Tela de login
 - Dashboard com indicadores reais
 - Navegação pelos 11 módulos
@@ -53,7 +65,9 @@ npm run dev
 - Senhas com bcrypt e autenticação JWT
 
 ## 7. Pontos que precisam ser finalizados antes de uso real
+
 Este é um ponto de partida funcional, não um sistema pronto para operação de uma clínica.
+
 - Ajustar permissões por cargo; atualmente a autenticação identifica o funcionário, mas não aplica uma matriz completa de permissões.
 - Implementar baixa de estoque transacional ao registrar aplicação e validar saldo/validade do lote.
 - Impedir movimentações inconsistentes e registrar automaticamente logs de auditoria.
