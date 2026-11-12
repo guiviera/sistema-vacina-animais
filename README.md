@@ -1,6 +1,6 @@
 # VetCare — Sistema de Vacinação Veterinária
 
-Projeto desenvolvido utilizando MySQL, HTML, CSS, JavaScript e Node.js.
+Projeto desenvolvido utilizando HTML, CSS, JavaScript, Node.js, Express e MySQL.
 
 O sistema possui frontend em HTML/CSS/JavaScript puro, backend Node.js + Express e banco de dados MySQL.
 
