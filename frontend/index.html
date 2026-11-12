@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>VetCare | Gestão veterinária</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <section id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <div class="brand-mark">✚</div>
+      <p class="eyebrow">GESTÃO VETERINÁRIA</p>
+      <h1>Bem-vindo ao VetCare</h1>
+      <p class="muted">Entre para acessar o painel administrativo.</p>
+      <form id="loginForm">
+        <label>Login<input name="login" autocomplete="username" required placeholder="Seu usuário"></label>
+        <label>Senha<input name="senha" type="password" autocomplete="current-password" required placeholder="Sua senha"></label>
+        <p id="loginError" class="error"></p>
+        <button class="btn primary full" type="submit">Entrar no sistema</button>
+      </form>
+      <p class="signup-prompt">Primeiro acesso? <a href="cadastro.html">Criar cadastro inicial</a></p>
+      <small>O cadastro inicial só fica disponível enquanto não existir nenhum usuário.</small>
+    </div>
+  </section>
+
+  <div id="appShell" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="brand-mark small">✚</span><span>VetCare<small>GESTÃO VETERINÁRIA</small></span></div>
+      <div class="nav-label">MENU PRINCIPAL</div>
+      <nav id="navigation">
+        <button class="nav-item active" data-page="dashboard"><span>▦</span> Visão geral</button>
+        <div class="nav-label">CADASTROS</div>
+        <button class="nav-item" data-page="tutor"><span>♙</span> Tutores</button>
+        <button class="nav-item" data-page="animais"><span>♡</span> Animais</button>
+        <button class="nav-item" data-page="funcionarios"><span>♧</span> Funcionários</button>
+        <button class="nav-item" data-page="usuarios"><span>⌘</span> Usuários</button>
+        <div class="nav-label">VACINAÇÃO</div>
+        <button class="nav-item" data-page="vacinas"><span>✚</span> Vacinas</button>
+        <button class="nav-item" data-page="lote_vacinas"><span>▤</span> Lotes</button>
+        <button class="nav-item" data-page="aplicacoes"><span>✓</span> Aplicações</button>
+        <button class="nav-item" data-page="estoque_vacinas"><span>▥</span> Estoque</button>
+        <button class="nav-item" data-page="agendamentos"><span>▣</span> Agendamentos</button>
+        <div class="nav-label">ADMINISTRAÇÃO</div>
+        <button class="nav-item" data-page="despesas"><span>＄</span> Despesas</button>
+        <button class="nav-item" data-page="logs"><span>≋</span> Logs do sistema</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button id="themeToggle" class="nav-item"><span>◐</span> Alternar tema</button>
+        <button id="logoutBtn" class="nav-item"><span>↪</span> Sair</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button id="menuToggle" class="icon-btn mobile-only" aria-label="Abrir menu">☰</button>
+        <div><p class="eyebrow" id="breadcrumb">PAINEL</p><h2 id="pageTitle">Visão geral</h2></div>
+        <div class="top-user"><div class="avatar">VC</div><div><strong id="userName">Usuário</strong><small id="userRole">Equipe</small></div></div>
+      </header>
+      <section id="pageContent" class="page-content"></section>
+      <footer>VetCare · Sistema de gestão veterinária</footer>
+    </main>
+  </div>
+  <div id="modal" class="modal hidden">
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-panel">
+      <div class="modal-head"><div><p class="eyebrow">GERENCIAMENTO</p><h3 id="modalTitle">Novo registro</h3></div><button class="icon-btn" id="modalClose">✕</button></div>
+      <form id="recordForm"><div id="formFields" class="form-grid"></div><p id="formError" class="error"></p><div class="modal-actions"><button type="button" class="btn ghost" id="cancelModal">Cancelar</button><button class="btn primary" type="submit">Salvar registro</button></div></form>
+    </div>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
