@@ -1,2 +1,2 @@
 # sistema-vacina-animais
-projeto desenvolvido em mysql, html, css e js
+projeto desenvolvido em MYSQL, HTML, CSS e Node.js
